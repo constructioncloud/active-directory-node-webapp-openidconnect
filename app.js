@@ -209,7 +209,8 @@ app.get('/login',
         response: res,                      // required
         resourceURL: config.resourceURL,    // optional. Provide a value if you want to specify the resource.
         customState: 'my_state',            // optional. Provide a value if you want to provide custom state value.
-        failureRedirect: '/' 
+        failureRedirect: '/',
+        prompt: 'admin_consent'
       }
     )(req, res, next);
   },

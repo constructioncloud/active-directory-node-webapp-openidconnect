@@ -1,15 +1,17 @@
 
 exports.creds = {
   // Required
-  identityMetadata: 'https://login.microsoftonline.com/<tenant_name>.onmicrosoft.com/.well-known/openid-configuration', 
+  identityMetadata:
+  // single tenant application
+  // 'https://login.microsoftonline.com/janconstructioncloudcom.onmicrosoft.com/.well-known/openid-configuration',
   // or equivalently: 'https://login.microsoftonline.com/<tenant_guid>/.well-known/openid-configuration'
   //
-  // or you can use the common endpoint
-  // 'https://login.microsoftonline.com/common/.well-known/openid-configuration'
+  // multi-tenant application (use the common endpoint)
+  'https://login.microsoftonline.com/common/.well-known/openid-configuration',
   // To use the common endpoint, you have to either set `validateIssuer` to false, or provide the `issuer` value.
 
   // Required, the client ID of your app in AAD  
-  clientID: '<your_client_id>',
+  clientID: '1a82c421-dbda-43d7-851b-eec73561db00',
 
   // Required, must be 'code', 'code id_token', 'id_token code' or 'id_token' 
   responseType: 'code id_token', 
@@ -25,10 +27,10 @@ exports.creds = {
   
   // Required if `responseType` is 'code', 'id_token code' or 'code id_token'. 
   // If app key contains '\', replace it with '\\'.
-  clientSecret: '<your_client_secret>', 
+  clientSecret: 'c1WGD4jL1kaGFF3NBbEnOZj6tb3OZml4GHF6l+vxsOM=',
 
   // Required to set to false if you don't want to validate issuer
-  validateIssuer: true,
+  validateIssuer: false,
   
   // Required to set to true if you are using B2C endpoint
   // This sample is for v1 endpoint only, so we set it to false
@@ -81,7 +83,7 @@ exports.destroySessionUrl = 'https://login.microsoftonline.com/common/oauth2/log
 // If you want to use the mongoDB session store for session middleware; otherwise we will use the default
 // session store provided by express-session.
 // Note that the default session store is designed for development purpose only.
-exports.useMongoDBSessionStore = true;
+exports.useMongoDBSessionStore = false;
 
 // If you want to use mongoDB, provide the uri here for the database.
 exports.databaseUri = 'mongodb://localhost/OIDCStrategy';
