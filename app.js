@@ -210,7 +210,7 @@ app.get('/login',
         resourceURL: config.resourceURL,    // optional. Provide a value if you want to specify the resource.
         customState: 'my_state',            // optional. Provide a value if you want to provide custom state value.
         failureRedirect: '/',
-        prompt: 'admin_consent'
+        // prompt: 'admin_consent' // used by AAD admins to grant access to their Active Directory
       }
     )(req, res, next);
   },
