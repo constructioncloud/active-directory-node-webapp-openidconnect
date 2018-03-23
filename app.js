@@ -219,6 +219,24 @@ app.get('/login',
     res.redirect('/');
 });
 
+
+app.get('/login/admin',
+    function(req, res, next) {
+        passport.authenticate('azuread-openidconnect',
+            {
+                response: res,                      // required
+                resourceURL: config.resourceURL,    // optional. Provide a value if you want to specify the resource.
+                customState: 'my_state',            // optional. Provide a value if you want to provide custom state value.
+                failureRedirect: '/',
+                prompt: 'admin_consent' // used by AAD admins to grant access to their Active Directory
+            }
+        )(req, res, next);
+    },
+    function(req, res) {
+        log.info('Login was called in the Sample');
+        res.redirect('/');
+    });
+
 // 'GET returnURL'
 // `passport.authenticate` will try to authenticate the content returned in
 // query (such as authorization code). If authentication fails, user will be

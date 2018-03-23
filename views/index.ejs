@@ -1,6 +1,7 @@
 <% if (!user) { %>
 	<h2>Welcome! Please log in.</h2>
-	<a href="/login">Log In</a>
+	<a href="/login">Log In</a><br>
+    <a href="/login/admin">Log In as AAD admin</a>
 <% } else { %>
 	<h2>Hello, <%= user.displayName %>.</h2>
 	<a href="/account">Account Info</a></br>
